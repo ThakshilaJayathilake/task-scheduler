@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_golang_yt/colors/app_colors.dart';
+import 'package:flutter_golang_yt/widget/task_widget.dart';
 
 class AllTasks extends StatelessWidget {
   const AllTasks({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List myData = [
+      "Try harder",
+      "Try Smarter"
+    ];
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.only(left: 20, top: 60),
+            padding: const EdgeInsets.only(left: 20, top: 40),
             alignment: Alignment.topLeft,
             child: Icon(Icons.arrow_back, color: AppColors.secondaryColor,),
             width: double.maxFinite,
@@ -26,7 +31,7 @@ class AllTasks extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             child: Row(
               children: [
                 Icon(Icons.home, color: AppColors.secondaryColor,),
@@ -49,6 +54,19 @@ class AllTasks extends StatelessWidget {
                 ),)
               ],
             ),
+          ),
+          Flexible(
+            child: ListView.builder(
+                itemCount: myData.length,
+                itemBuilder: (context, index){
+              return Container(
+                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                child: TaskWidget(
+                  text: myData[index],
+                  color: Colors.blueGrey,
+                ),
+              );
+            }),
           )
         ],
     ),
